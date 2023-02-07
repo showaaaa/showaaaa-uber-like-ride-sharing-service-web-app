@@ -1,0 +1,26 @@
+{% extends "ride/base.html" %}
+<!-- <h1>Ride Home2</h1>
+
+{% if title %}
+    <title>Ride - {{title}}</title>
+{% else %}
+    <title>Ride - no title</title>
+{% endif %} -->
+
+{% block content %}
+    {% for ride in rides %}
+        <!-- <h1>{{ ride.destination }}</h1>
+        <p>{{ ride.numberpassengers }} passengers on {{ ride.date }}</p> -->
+        <article class="media content-section">
+          <!-- <img class="rounded-circle article-img" src="{{ post.author.profile.image.url}}"> -->
+            <div class="media-body">
+              <div class="article-metadata">
+                <a class="mr-2" href="{% url 'ride-detail' ride.id %}">{{ ride.destAddr }}</a>
+                <small class="text-muted">{{ ride.date }}</small>
+              </div>
+              <!-- <h2><a class="article-title" href="#">{{ ride.numPeople }}</a></h2> -->
+              <!-- <p class="article-content">{{ post.content }}</p> -->
+            </div>
+          </article>
+    {% endfor %}
+{% endblock content %}

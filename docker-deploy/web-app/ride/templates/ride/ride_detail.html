@@ -1,0 +1,59 @@
+{% extends "ride/base.html" %}
+<!-- <h1>Ride Home2</h1>
+
+{% if title %}
+    <title>Ride - {{title}}</title>
+{% else %}
+    <title>Ride - no title</title>
+{% endif %} -->
+
+{% block content %}   
+    <!-- <h1>{{ ride.destination }}</h1>
+    <p>{{ ride.numberpassengers }} passengers on {{ ride.date }}</p> -->
+    <article class="media content-section">
+        <!-- <img class="rounded-circle article-img" src="{{ object.author.profile.image.url}}"> -->
+        <div class="media-body">
+            <div class="article-metadata">
+            <a class="mr-2" href="#">{{ object.destAddr }}</a>
+            <small class="text-muted">{{ object.date }}</small>
+            </div>
+            <div class="article-info">
+            <b>RideOwner:</b> {{ object.rideOwner.username }}<br>
+            <b>Driver:</b> {{ object.driver.username }}<br>
+            <b>Sharer:</b> 
+            <ul>
+                {% for s in object.sharer.all %}
+                <li> {{s.username}}</li>
+                {% endfor %}
+            </ul>
+            <b>Number of People:</b> {{ object.numPeople }}<br>
+            <b>Vehicle Type:</b> {{ object.vehicleType }}<br>
+            <b>Shared:</b> {{ object.shared }}<br>
+            <b>AllowSharernum:</b> {{ object.allowSharernum }}<br>
+            <b>Vehicle Type:</b> {{ object.vehicleType }}<br>
+            <b>specRequest:</b> {{ object.specRequest }}<br>
+            <b>Status:</b> {{ object.get_status_display }}
+            </div>
+        </div>
+
+            {% if object.rideOwner == user %}
+                {% if object.status == 1 %}
+                    <div>
+                        <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'ride-update' object.id %}">Edit Ride Request</a>
+                        <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'ride-delete' object.id %}">Delete Ride Request</a>
+                    </div> 
+                {% endif %} 
+            {% endif %}
+            {% if user in object.sharer.all %}
+                <div>
+                    <!-- <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'sharer-delete' object.id %}">Delete Sharer Ride</a> -->
+                    <!-- <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'sharer-delete' pk=ride.pk %}">Delete Sharer Ride</a> -->
+                    <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'sharer-delete' object.id %}">Delete Ride Request</a>
+                </div>             
+            {% endif %}
+            </div>
+            <!-- <h2 class="article-title">{{ object.numPeople }}</h2> -->
+            <!-- <p class="article-content">{{ object.content }}</p> -->
+        </div>
+    </article>  
+{% endblock content %}
