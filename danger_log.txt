@@ -1,0 +1,41 @@
+02/01
+Considering user's password, we cannot store user's plain text password at the database. 
+If the mochine is compromised, user's password will be stolen by malicious users.
+    
+    Solution: We decided to use django's built in User from django.contrib.auth.models, which has iteration,
+              salt,hashing algorithm.
+
+02/02
+malicious users can directly type url to create ride without login.
+    
+    Solution: add from django.contrib.auth.mixins import LoginRequiredMixin to those views
+
+02/03
+Users may delete the ride by accidient.
+
+    Solution: we add a confirm page for their deletion.
+    
+02/06
+For sending email, we need to store the plaintext password in the setting.py. Malicious users
+can see my password if the machine is compromised.
+
+    Solution: We decided to use gmail, we allow our email multifactor authentication,
+    and create a one-time app password for our django app. In this way, one-time password
+    will not be used by login.
+
+02/07
+POST request might not be sent by our website but malicious website
+    
+    solution: check CSRF token when receiving POST request.
+
+02/07
+Malicious users may DDoS attack on our website.
+
+    Solution: Using Nginx to do reverse proxy and protect our website.
+
+
+
+
+
+
+
