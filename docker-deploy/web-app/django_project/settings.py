@@ -145,4 +145,4 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'ridesharingservice1@gmail.com'
 EMAIL_HOST_PASSWORD = 'insbyarshddvcudy'
 
-CSRF_TRUSTED_ORIGINS = ['http://*.vcm-30937.vm.duke.edu:8000/','http://*.127.0.0.1:8000/'] 
+CSRF_TRUSTED_ORIGINS = ['http://*.vm.duke.edu:8000','http://*.127.0.0.1:8000/'] 

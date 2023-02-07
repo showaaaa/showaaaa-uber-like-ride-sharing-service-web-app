@@ -4,9 +4,9 @@ services:
   db:
       image: postgres
       environment:
-        - POSTGRES_DB="rideapp"
-        - POSTGRES_USER="xw202"
-        - POSTGRES_PASSWORD="qwerty"
+        - POSTGRES_DB=rideapp
+        - POSTGRES_USER=xw202
+        - POSTGRES_PASSWORD=qwerty
       volumes:
             - data-volume:/var/lib/postgresql/data
   web-init:
